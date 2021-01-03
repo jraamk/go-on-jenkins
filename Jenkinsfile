@@ -32,7 +32,18 @@ pipeline {
         }
      }
 
+      stage('Release') {
+   		 when {
+        	buildingTag()
+               }
+    		environment {
+        	GITHUB_TOKEN = credentials('GITHUB_TOKEN')
+    	      }
+         steps {
+          sh 'curl -sL https://git.io/goreleaser | bash'
+      }
+   }
 
-     }
+ }
 
 }
