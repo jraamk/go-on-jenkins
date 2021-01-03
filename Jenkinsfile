@@ -28,7 +28,7 @@ pipeline {
      stage('Code Analysis') {
           steps {
             sh 'curl -sfL https://install.goreleaser.com/github.com/golangci/golangci-lint.sh | sh -s v1.17.1'
-            sh '/usr/bin/sudo cp ./bin/golangci-lint $GOPATH/bin/'
+            sh 'cp ./bin/golangci-lint $GOPATH/bin/'
             sh 'golangci-lint run'
 
 
